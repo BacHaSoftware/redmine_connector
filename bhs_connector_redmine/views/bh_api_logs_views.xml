@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="bh_api_logs_tree_view" model="ir.ui.view">
+        <field name="name">bh.api.logs.tree.view</field>
+        <field name="model">bh.api.logs</field>
+        <field name="arch" type="xml">
+                <tree string="Slack connector record" edit="0">
+                    <field name="log_date"/>
+                    <field name="type" optional="hide"/>
+                    <field name="logs"/>
+                </tree>
+        </field>
+    </record>
+
+    <record id="bh_api_logs_act" model="ir.actions.act_window">
+        <field name="name">Redmine API Logs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bh.api.logs</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="bh_api_logs_menu"
+              name="Redmine API Logs"
+              parent="base.menu_users"
+              action="bh_api_logs_act"
+              groups="base.group_system"
+              sequence="6"/>
+
+    <record id="bhs_hr_timesheet_redmine_line_tree" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.hr_timesheet.redmine</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="redmine_activity" optional="show" readonly="1" force_save="1"/>
+                </xpath>
+
+        </field>
+    </record>
+</odoo>
