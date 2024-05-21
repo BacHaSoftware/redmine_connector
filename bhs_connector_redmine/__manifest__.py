@@ -20,7 +20,7 @@
     'external_dependencies': {
         'python': ['python-redmine'],
     },
-    'images': ['static/images/banner.jpg'],
+    'images': ['static/images/banner.gif'],
     'installable': True,
     'application': True,
     'license': 'LGPL-3'
